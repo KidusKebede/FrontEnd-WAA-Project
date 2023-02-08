@@ -1,6 +1,9 @@
 import { Route, Routes, Navigate } from "react-router";
 // import { Routes } from "react-router-dom";
 import Properties from "../container/Properties";
+import Rent from "../container/Rent";
+import Buy from "../container/Buy";
+import PropertyDetails from "../component/PropertyDetails";
 
 
 
@@ -9,18 +12,28 @@ export default function PageRoutes(props) {
         <Routes>
         
 
-            <Route path="/" element={<Properties />}></Route>
+            {/* <Route path="/" element={<Properties />}></Route> */}
             {/* <Route path="/" element={<Navigate to="Properties"/>}></Route> */}
-            {/* <Route path="properties">
-                <Route index element={<Students />} />
-                <Route path=":id" element={<StudentDetails />}></Route>
-            </Route> */}
+            <Route path="/">
+                <Route index element={<Properties />} />
+                <Route path=":id" element={<PropertyDetails />}></Route>
+            </Route>
 
-            {/* <Route path="addStudent" element={<AddStudent />}></Route> */}
+            <Route path="rent">
+                 <Route index element={<Rent />}/>
+                 <Route path=":id" element={<PropertyDetails />}></Route>
+            </Route>
+
+            <Route path="buy">
+            <Route index  element={<Buy />}/>
+            <Route path=":id" element={<PropertyDetails />}></Route>
+            </Route>
+
             {/* <Route path="/course" element={<Course />}></Route> */}
             {/* <Route path="selected" element={<SelectedStudent />}></Route> */}
 
         </Routes>
+      
     );
 }
 

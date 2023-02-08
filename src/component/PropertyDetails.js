@@ -1,53 +1,59 @@
 import axios from 'axios';
-import React, { useState , useParams, useEffect, useNavigate} from 'react'
+import React, { useState , useEffect, } from 'react'
+import { redirect, useNavigate, useParams } from "react-router";
 
 export default function PropertyDetails(props) {
-     const navigate= useNavigate();
+     //let navigate= useNavigate();
 
     const[propertyObj, setPropertyObj]=useState({
         id:"",
         propertyType:"",
-        price:"",
+        price:0,
         numberOfRooms:"",
         homeType:"",
-        location:""
+        viewCount: "",
+        location:"",
+        users: []
     });
 
-    const param= useParams();
+    let param= useParams();
 
     //Fetches a property by an ID
-    const getPropertyById= ()=>{
+    let getPropertyById= ()=>{
+        console.log(param.id);
         axios.get("http://localhost:8080/api/v1/properties" + param.id)
-        .then((res)=>setPropertyObj(res.data))
-        .catch(()=>alert("Data not Found"));
+        .then(res=>{
+            setPropertyObj(res.data)
+            console.log(propertyObj);
+    }).catch(()=>alert("Data not Found"));
     }
 
     //Deletes the property and navigates to the main page
-    const deleteProperty= ()=>{
-        axios.delete("http://localhost:8080/api/v1/properties"+ param.id).then((res)=>{
-            navigate("/");
-        }).catch((e)=>{console.error()})
-    }
+    // const deleteProperty= ()=>{
+    //     axios.delete("http://localhost:8080/api/v1/properties"+ param.id).then((res)=>{
+    //         navigate("/");
+    //     }).catch((e)=>{console.error()})
+    // }
 
-    //Apply a property
+    // //Apply a property
 
-    const applyProperty= ()=>{
-        navigate('/registrationForm' + param.id)
-    }
+    // const applyProperty= ()=>{
+    //     navigate('/registrationForm' + param.id)
+    // }
 
-    //Edit a property
+    // //Edit a property
 
-    const editProperty=()=>{
-        navigate('/editProperty' + param.id);
-    }
+    // const editProperty=()=>{
+    //     navigate('/editProperty' + param.id);
+    // }
 
-    const addFavorite= ()=>{
-        navigate('/favoriteList' + param.id)
-    }
+    // const addFavorite= ()=>{
+    //     navigate('/favoriteList' + param.id)
+    // }
 
     useEffect(()=>{
         getPropertyById()
-    }, [param.id]);
+    }, []);
   return (
     <div>
 
@@ -56,11 +62,22 @@ export default function PropertyDetails(props) {
         <h1> Price: {propertyObj.price}</h1>
         <h1> numberOfRooms: {propertyObj.numberOfRooms}</h1>
         <h1>HomeType :{propertyObj.homeType}</h1>
+        <h1>View Count :{propertyObj.viewCount}</h1>
         <h1> Location:{propertyObj.location} </h1>
-        <button onClick={deleteProperty}>Delete</button>
+        {/* <button onClick={deleteProperty}>Delete</button>
         <button onClick={editProperty}>Edit</button>
         <button onClick={applyProperty}>apply</button>
-        <button onClick={addFavorite}>Favorite</button>
+        <button onClick={addFavorite}>Favorite</button> */}
+        {/* <h1>ID </h1>
+        <h1> PropertyType: </h1>
+        <h1> Price: </h1>
+        <h1> numberOfRooms: </h1>
+        <h1>HomeType :</h1>
+        <h1> Location: </h1> */}
+        <button >Delete</button>
+        <button >Edit</button>
+        <button >apply</button>
+        <button >Favorite</button>
 
     </div>
   )
