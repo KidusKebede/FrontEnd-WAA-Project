@@ -3,7 +3,7 @@ import React, { useState , useEffect, } from 'react'
 import { redirect, useNavigate, useParams } from "react-router";
 
 export default function PropertyDetails(props) {
-     let navigate= useNavigate();
+     //let navigate= useNavigate();
 
     const[propertyObj, setPropertyObj]=useState({
         id:"",
