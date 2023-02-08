@@ -9,8 +9,8 @@ export default function Header() {
                 <nav>
                     <ul>
                         {/* Customer */}
-                        <li><Link to="/">Rent</Link></li>
-                        <li><Link to="/">Buy</Link></li>
+                        <li><Link to="/rent">Rent</Link></li>
+                        <li><Link to="/buy">Buy</Link></li>
                         <li><Link to="/">Favorites</Link></li>
                         {/* Owner */}
                         <li><Link to="/">Oproperties</Link></li>

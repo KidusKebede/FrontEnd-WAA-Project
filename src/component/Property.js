@@ -1,13 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Property.css'
 
 export default function Property(props) {
   return (
-    <div id= "property">
-      <h1>ID: {props.id}</h1>
-      <h1>PropertyType: {props.propertyType}</h1>
-      <h1>Price: {props.price}</h1>
+    <Link to={`${props.model.id}`}>
+    <div id= "property"> 
+      {/* id= "property"  className="Content"*/}
+      <h1>ID: {props.model.id}</h1>
+      <h1>PropertyType: {props.model.propertyType}</h1>
+      <h1>Price: {props.model.price}</h1>
        </div>
-
+       </Link>
+    
   )
 }
