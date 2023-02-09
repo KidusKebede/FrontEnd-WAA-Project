@@ -6,16 +6,31 @@ import './Property'
 export default function PropertyDetails(props) {
   //let navigate= useNavigate();
 
-  const [propertyObj, setPropertyObj] = useState({
-    id: "",
-    propertyType: "",
-    price: 0,
-    numberOfRooms: "",
-    homeType: "",
-    viewCount: "",
-    location: "",
-    users: []
-  });
+
+    const [owner, setOwner] = useState({
+      id: "",
+      name:  "",
+      email:  "",
+      role: {
+          id: "",
+          role: ""
+      },
+      password: "",
+      active: true
+
+});
+
+    const[propertyObj, setPropertyObj]=useState({
+        id:"",
+        propertyType:"",
+        price:0,
+        numberOfRooms:"",
+        homeType:"",
+        viewCount: "",
+        location:"",
+        users: []
+    });
+
 
   let param = useParams();
 
@@ -29,12 +44,22 @@ export default function PropertyDetails(props) {
       }).catch(() => alert("Data not Found"));
   }
 
-  //Deletes the property and navigates to the main page
-  // const deleteProperty= ()=>{
-  //     axios.delete("http://localhost:8080/api/v1/properties"+ param.id).then((res)=>{
-  //         navigate("/");
-  //     }).catch((e)=>{console.error()})
-  // }
+
+    let getPropertyOwner= ()=>{
+      console.log(param.id);
+      axios.get("http://localhost:8080/api/v1/users/properties/" + param.id)
+      .then(res=>{
+          setOwner(res.data)
+  }).catch(()=>alert("Owner Data not Found"));
+  }
+
+    //Deletes the property and navigates to the main page
+    // const deleteProperty= ()=>{
+    //     axios.delete("http://localhost:8080/api/v1/properties"+ param.id).then((res)=>{
+    //         navigate("/");
+    //     }).catch((e)=>{console.error()})
+    // }
+
 
   // //Apply a property
 
@@ -52,9 +77,21 @@ export default function PropertyDetails(props) {
   //     navigate('/favoriteList' + param.id)
   // }
 
-  useEffect(() => {
-    getPropertyById()
-  }, [param.id]);
+
+    useEffect(()=>{
+        getPropertyById()
+        getPropertyOwner()
+    }, [param.id]);
+
+    const applicationData = {
+      date: "03,12,2023",
+      activityType: "rent",
+      status: "applied",
+      ownerId: owner.id,
+      users: 1,
+      property:param.id
+    };
+
   return (
     <div id='details'>
       <div>
