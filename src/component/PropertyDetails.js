@@ -6,17 +6,9 @@ import './Property'
 export default function PropertyDetails(props) {
   //let navigate= useNavigate();
 
-  const [propertyObj, setPropertyObj] = useState({
-    id: "",
-    propertyType: "",
-    price: 0,
-    numberOfRooms: "",
-    homeType: "",
-    viewCount: "",
-    location: "",
-    users: []
-  });
+  const[propertyObj, setPropertyObj]= useState({});
 
+  
   let param = useParams();
 
   //Fetches a property by an ID
