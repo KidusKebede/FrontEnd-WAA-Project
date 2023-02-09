@@ -6,19 +6,19 @@ import Property from '../component/Property';
 export default function Properties(props) {
 
 
-    const properties= [
+    // const properties= [
       
-        {id:2, propertyType:"sale", price:5000, numberOfRooms:8, homeType:"House", location:"FL"},
-        {id:4, propertyType:"sale", price:5000, numberOfRooms:8, homeType:"House", location:"FL"},
+    //     {id:2, propertyType:"sale", price:5000, numberOfRooms:8, homeType:"House", location:"FL"},
+    //     {id:4, propertyType:"sale", price:5000, numberOfRooms:8, homeType:"House", location:"FL"},
    
-    ]
-    // const[properties, setProperties]= useState([]);
+    // ]
+    const[properties, setProperties]= useState([]);
 
-    // const getAllProperties= ()=>{
-    //     axios.get("http://localhost:8080/api/v1/properties").then((res)=>setProperties(res.data)).catch((e)=>{
-    //         console.error();
-    //     })
-    // }
+    const getAllProperties= ()=>{
+        axios.get("http://localhost:8080/api/v1/properties/sale").then((res)=>setProperties(res.data)).catch((e)=>{
+            console.error();
+        })
+    }
     
 
     const propertylists= properties.map(p=>
@@ -26,9 +26,9 @@ export default function Properties(props) {
         <Property model={p} />
     )
 
-    // useEffect(()=>{
-    //     getAllProperties();
-    // }, [])
+    useEffect(()=>{
+        getAllProperties();
+    }, [])
   return (
     <div>
      {propertylists}

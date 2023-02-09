@@ -21,7 +21,7 @@ export default function PropertyDetails(props) {
     //Fetches a property by an ID
     let getPropertyById= ()=>{
         console.log(param.id);
-        axios.get("http://localhost:8080/api/v1/properties" + param.id)
+        axios.get("http://localhost:8080/api/v1/properties/" + param.id)
         .then(res=>{
             setPropertyObj(res.data)
             console.log(propertyObj);
@@ -53,7 +53,7 @@ export default function PropertyDetails(props) {
 
     useEffect(()=>{
         getPropertyById()
-    }, []);
+    }, [param.id]);
   return (
     <div>
 
