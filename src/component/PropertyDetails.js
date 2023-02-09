@@ -1,12 +1,13 @@
 import axios from 'axios';
-import React, { useState, useEffect, } from 'react'
+import React, { useState, useEffect, useRef, } from 'react'
 import { redirect, useNavigate, useParams } from "react-router";
 import './Property'
+import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
 
 export default function PropertyDetails(props) {
-  //let navigate= useNavigate();
+  let navigate= useNavigate();
 
-
+  const form=useRef()
     const [owner, setOwner] = useState({
       id: "",
       name:  "",
@@ -84,12 +85,39 @@ export default function PropertyDetails(props) {
     }, [param.id]);
 
     const applicationData = {
-      date: "03,12,2023",
+      date: "2023-01-o1",
       activityType: "rent",
       status: "applied",
       ownerId: owner.id,
       users: 1,
       property:param.id
+    };
+
+    let createApplication= ()=>{
+     
+      axios.post("http://localhost:8080/api/v1/activities", applicationData)
+      .then(res=>{
+          
+  }).catch(()=>alert("Owner Data not Found"));
+  }
+
+    const alertOnClick = () => {
+      alert("Thank you we have received your application, we will contact you once we review your application ");
+    };
+  
+    const sendEmail = (event) => {
+      alertOnClick();
+      event.preventDefault();
+  
+      emailjs.sendForm('service_am29jrf',
+        'template_2q3b47u',
+        form.current,
+        'oRa0T2idxrRZak40l')
+        .then((result) => {
+          console.log(result.text);
+        }, (error) => {
+          console.log(error.text);
+        });
     };
 
   return (
@@ -108,16 +136,16 @@ export default function PropertyDetails(props) {
 
           <div id="btn">
             <ul>
-              <li>
-                <button >Delete</button>
+             
+                
+                <li>
+                <form ref={form} onSubmit={sendEmail}>
+                <input type="submit" value="Apply" />
+                
+               </form>
                 </li>
                 <li>
-                <button >Edit</button>
-                </li>
-                <li>
-                <button >apply</button>
-                </li>
-                <li>
+                  
                 <button >Favorite</button>
                 </li>
             </ul>
@@ -126,5 +154,8 @@ export default function PropertyDetails(props) {
       </div>
 
     </div>
+  //   <form ref={form} onSubmit={sendEmail}>
+  //   <input type="submit" value="Apply" />
+  //  </form>
   )
 }
