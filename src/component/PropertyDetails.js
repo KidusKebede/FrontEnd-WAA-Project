@@ -5,6 +5,19 @@ import { redirect, useNavigate, useParams } from "react-router";
 export default function PropertyDetails(props) {
      //let navigate= useNavigate();
 
+    const [owner, setOwner] = useState({
+      id: "",
+      name:  "",
+      email:  "",
+      role: {
+          id: "",
+          role: ""
+      },
+      password: "",
+      active: true
+
+});
+
     const[propertyObj, setPropertyObj]=useState({
         id:"",
         propertyType:"",
@@ -27,6 +40,14 @@ export default function PropertyDetails(props) {
             console.log(propertyObj);
     }).catch(()=>alert("Data not Found"));
     }
+
+    let getPropertyOwner= ()=>{
+      console.log(param.id);
+      axios.get("http://localhost:8080/api/v1/users/properties/" + param.id)
+      .then(res=>{
+          setOwner(res.data)
+  }).catch(()=>alert("Owner Data not Found"));
+  }
 
     //Deletes the property and navigates to the main page
     // const deleteProperty= ()=>{
@@ -53,7 +74,17 @@ export default function PropertyDetails(props) {
 
     useEffect(()=>{
         getPropertyById()
+        getPropertyOwner()
     }, [param.id]);
+
+    const applicationData = {
+      date: "03,12,2023",
+      activityType: "rent",
+      status: "applied",
+      ownerId: owner.id,
+      users: 1,
+      property:param.id
+    };
   return (
     <div>
 
