@@ -11,3 +11,33 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.ownerHeader {
+  display: flex;
+  flex-direction: row;
+  font-size: 150%;
+  background-color: rgb(172, 244, 244);
+}
+
+.ownerHeader ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.ownerHeader li {
+  margin: 0 1rem;
+}
+
+.ownerHeader a {
+  text-decoration: none;
+  color: rgb(5, 79, 113);
+  font-size: 1.25rem;
+}
+
+.ownerHeader a:hover,
+.ownerHeader a:active {
+  color: #b864da;
+}

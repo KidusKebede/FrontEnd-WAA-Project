@@ -1,12 +1,39 @@
 import axios from 'axios';
-import React, { useState, useEffect, } from 'react'
+import React, { useState, useEffect, useRef, } from 'react'
 import { redirect, useNavigate, useParams } from "react-router";
 import './Property'
+import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
 
 export default function PropertyDetails(props) {
-  //let navigate= useNavigate();
 
-  const[propertyObj, setPropertyObj]= useState({});
+  let navigate= useNavigate();
+
+  const form=useRef()
+    const [owner, setOwner] = useState({
+      id: "",
+      name:  "",
+      email:  "",
+      role: {
+          id: "",
+          role: ""
+      },
+      password: "",
+      active: true
+
+});
+
+    const[propertyObj, setPropertyObj]=useState({
+        id:"",
+        propertyType:"",
+        price:0,
+        numberOfRooms:"",
+        homeType:"",
+        viewCount: "",
+        location:"",
+        users: []
+    });
+
+
 
   
   let param = useParams();
@@ -21,12 +48,22 @@ export default function PropertyDetails(props) {
       }).catch(() => alert("Data not Found"));
   }
 
-  //Deletes the property and navigates to the main page
-  // const deleteProperty= ()=>{
-  //     axios.delete("http://localhost:8080/api/v1/properties"+ param.id).then((res)=>{
-  //         navigate("/");
-  //     }).catch((e)=>{console.error()})
-  // }
+
+    let getPropertyOwner= ()=>{
+      console.log(param.id);
+      axios.get("http://localhost:8080/api/v1/users/properties/" + param.id)
+      .then(res=>{
+          setOwner(res.data)
+  }).catch(()=>alert("Owner Data not Found"));
+  }
+
+    //Deletes the property and navigates to the main page
+    // const deleteProperty= ()=>{
+    //     axios.delete("http://localhost:8080/api/v1/properties"+ param.id).then((res)=>{
+    //         navigate("/");
+    //     }).catch((e)=>{console.error()})
+    // }
+
 
   // //Apply a property
 
@@ -44,9 +81,48 @@ export default function PropertyDetails(props) {
   //     navigate('/favoriteList' + param.id)
   // }
 
-  useEffect(() => {
-    getPropertyById()
-  }, [param.id]);
+
+    useEffect(()=>{
+        getPropertyById()
+        getPropertyOwner()
+    }, [param.id]);
+
+    const applicationData = {
+      date: "2023-01-o1",
+      activityType: "rent",
+      status: "applied",
+      ownerId: owner.id,
+      users: 1,
+      property:param.id
+    };
+
+    let createApplication= ()=>{
+     
+      axios.post("http://localhost:8080/api/v1/activities", applicationData)
+      .then(res=>{
+          
+  }).catch(()=>alert("Owner Data not Found"));
+  }
+
+    const alertOnClick = () => {
+      alert("Thank you we have received your application, we will contact you once we review your application ");
+    };
+  
+    const sendEmail = (event) => {
+      alertOnClick();
+      event.preventDefault();
+  
+      emailjs.sendForm('service_am29jrf',
+        'template_2q3b47u',
+        form.current,
+        'oRa0T2idxrRZak40l')
+        .then((result) => {
+          console.log(result.text);
+        }, (error) => {
+          console.log(error.text);
+        });
+    };
+
   return (
     <div id='details'>
       <div>
@@ -63,16 +139,16 @@ export default function PropertyDetails(props) {
 
           <div id="btn">
             <ul>
-              <li>
-                <button >Delete</button>
+             
+                
+                <li>
+                <form ref={form} onSubmit={sendEmail}>
+                <input type="submit" value="Apply" />
+                
+               </form>
                 </li>
                 <li>
-                <button >Edit</button>
-                </li>
-                <li>
-                <button >apply</button>
-                </li>
-                <li>
+                  
                 <button >Favorite</button>
                 </li>
             </ul>
@@ -81,5 +157,8 @@ export default function PropertyDetails(props) {
       </div>
 
     </div>
+  //   <form ref={form} onSubmit={sendEmail}>
+  //   <input type="submit" value="Apply" />
+  //  </form>
   )
 }
