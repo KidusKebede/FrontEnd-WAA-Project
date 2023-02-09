@@ -1,0 +1,25 @@
+#application{
+   
+}
+
+.applications>ul>li{
+    list-style-type: none;
+    background-image: url(https://cdn.pixabay.com/photo/2018/08/31/18/21/fantasy-3645269__340.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    display: inline-flex;
+
+
+}
+
+#boxed{
+    background-color: rgb(224, 209, 209);
+    list-style: none;
+    border-radius: 300px;
+    opacity: 0.7;
+    text-decoration: double;
+    text-transform: capitalize;
+    font-size: 13px;
+    padding-left: 0.5px;
+    padding-top: 5px;
+}

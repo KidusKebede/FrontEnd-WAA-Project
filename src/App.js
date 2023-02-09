@@ -9,7 +9,7 @@ function App() {
   //  <Properties/>
   <div className="App">
   <BrowserRouter>
-    <h1> G3 Property Managment Portal </h1>
+  <h1 id="header"> G3 Property Managment Portal </h1>
     <Dashboard />
   </BrowserRouter>
 </div>

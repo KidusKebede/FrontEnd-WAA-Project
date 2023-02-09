@@ -4,14 +4,21 @@ import './Property.css'
 
 export default function Property(props) {
   return (
-    <Link to={`${props.model.id}`}>
-    <div id= "property"> 
-      {/* id= "property"  className="Content"*/}
-      <h1>ID: {props.model.id}</h1>
-      <h1>PropertyType: {props.model.propertyType}</h1>
-      <h1>Price: {props.model.price}</h1>
-       </div>
-       </Link>
-    
+    <div id="property">
+      <ul>
+        <li>
+          <Link to={`${props.model.id}`}>
+            <img id="img" src='https://img.freepik.com/premium-photo/external-view-contemporary-house-with-pool-dusk_190619-224.jpg' alt='house' width="400px" height="300px"
+            ></img>
+            <div id='box' >
+
+              <h1 > for {props.model.propertyType}</h1>
+              <h1 id="price">price {props.model.price} $</h1>
+            </div>
+          </Link>
+        </li>
+      </ul>
+    </div>
+
   )
 }

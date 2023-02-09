@@ -4,8 +4,8 @@ import './Header.css'
 
 export default function Header() {
     return (
-       
-            <header>
+            <div>
+                <header>
                 <nav>
                     <ul>
                         {/* Customer */}
@@ -27,6 +27,6 @@ export default function Header() {
                     </ul>
                 </nav>
             </header>
-       
+            </div>
     )
 }
