@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Application from "./Application";
+import './Application.css'
 
 const Applications = () => {
   const [applicationList, setApplicationList] = useState([]);
@@ -31,11 +32,6 @@ const Applications = () => {
           <li key={activity.id}>
             {
               <div className="application">
-                {/* <Property
-                  id={activity.property.id}
-                  propertyType={activity.property.propertyType}
-                  price={activity.property.price}
-                /> */}
                 <Application activity={activity} />
               </div>
             }

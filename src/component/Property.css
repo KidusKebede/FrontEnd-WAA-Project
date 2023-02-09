@@ -1,8 +1,91 @@
 #property{
-    background-color: azure;
+    background-color: whitesmoke;
     color: black;
-    border: 2px solid red;
-    width: 300px;
+    border: 2px solid white;
+    width: 500px;
     padding-left: 20px;
     margin-top: 5px;
+
+    display: inline-flex;
+  
+
+}
+#property>ul:hover{
+    
+    background-color:white;
+    color: black;
+    border: 2px solid white;
+    width: 500px;
+    padding-left: 20px;
+    margin-top: 5px;
+    border-radius: 30px;
+    display: inline-flex;
+    font-style: oblique;
+  
+}
+
+#box{
+    background-color: rgb(225, 238, 238);
+    padding-left: 0.5px;
+    text-decoration: none;
+    border-radius: 30px;
+    padding-bottom: 10px;
+    color: rgb(12, 10, 14);
+    font-size: 18px;
+    font-family: nigerian;
+    font-style: italic;
+    text-transform: capitalize;
+    font-weight: bolder;
+   text-shadow: 1px 1px 2px black, 0 0 1em rgb(0, 255, 72), 0 0 0.2em rgb(191, 31, 31);
+
+    
+}
+
+#price{
+    font-size: 22px;
+}
+
+#property>ul>li{
+    list-style-type: none;
+}
+
+
+#propertyDetails{
+   
+    color:red;
+    width: 500px;
+    float:left;
+    margin-top: -400px;
+    margin-left: 100px;
+    position: absolute;
+    position: relative;
+    opacity: 0.9;
+    text-align: left;
+    padding-left: 30px;
+    border-radius: 40px;
+    font-size: 15px;
+    font-weight: 500px;
+    font-family: Nigerian;
+    font-style: italic;
+    height: 370px;
+
+}
+
+#btn{
+    background-color: aqua;
+    font-size: 30px;
+    border-radius: 30px;
+    width: 350px;
+}
+
+#btn>ul>li{
+    list-style: none;
+    display: inline-flex;
+    margin: 10px;
+   
+}
+#img{
+    margin-top: 5px;
+    border-radius: 50px;
+    border-color: rgb(236, 148, 16);
 }

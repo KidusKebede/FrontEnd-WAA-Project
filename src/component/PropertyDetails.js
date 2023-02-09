@@ -1,9 +1,11 @@
 import axios from 'axios';
-import React, { useState , useEffect, } from 'react'
+import React, { useState, useEffect, } from 'react'
 import { redirect, useNavigate, useParams } from "react-router";
+import './Property'
 
 export default function PropertyDetails(props) {
-     //let navigate= useNavigate();
+  //let navigate= useNavigate();
+
 
     const [owner, setOwner] = useState({
       id: "",
@@ -29,17 +31,19 @@ export default function PropertyDetails(props) {
         users: []
     });
 
-    let param= useParams();
 
-    //Fetches a property by an ID
-    let getPropertyById= ()=>{
-        console.log(param.id);
-        axios.get("http://localhost:8080/api/v1/properties/" + param.id)
-        .then(res=>{
-            setPropertyObj(res.data)
-            console.log(propertyObj);
-    }).catch(()=>alert("Data not Found"));
-    }
+  let param = useParams();
+
+  //Fetches a property by an ID
+  let getPropertyById = () => {
+    console.log(param.id);
+    axios.get("http://localhost:8080/api/v1/properties/" + param.id)
+      .then(res => {
+        setPropertyObj(res.data)
+        console.log(propertyObj);
+      }).catch(() => alert("Data not Found"));
+  }
+
 
     let getPropertyOwner= ()=>{
       console.log(param.id);
@@ -56,21 +60,23 @@ export default function PropertyDetails(props) {
     //     }).catch((e)=>{console.error()})
     // }
 
-    // //Apply a property
 
-    // const applyProperty= ()=>{
-    //     navigate('/registrationForm' + param.id)
-    // }
+  // //Apply a property
 
-    // //Edit a property
+  // const applyProperty= ()=>{
+  //     navigate('/registrationForm' + param.id)
+  // }
 
-    // const editProperty=()=>{
-    //     navigate('/editProperty' + param.id);
-    // }
+  // //Edit a property
 
-    // const addFavorite= ()=>{
-    //     navigate('/favoriteList' + param.id)
-    // }
+  // const editProperty=()=>{
+  //     navigate('/editProperty' + param.id);
+  // }
+
+  // const addFavorite= ()=>{
+  //     navigate('/favoriteList' + param.id)
+  // }
+
 
     useEffect(()=>{
         getPropertyById()
@@ -85,30 +91,39 @@ export default function PropertyDetails(props) {
       users: 1,
       property:param.id
     };
-  return (
-    <div>
 
-        <h1>ID:{propertyObj.id} </h1>
-        <h1> PropertyType: {propertyObj.propertyType}</h1>
-        <h1> Price: {propertyObj.price}</h1>
-        <h1> numberOfRooms: {propertyObj.numberOfRooms}</h1>
-        <h1>HomeType :{propertyObj.homeType}</h1>
-        <h1>View Count :{propertyObj.viewCount}</h1>
-        <h1> Location:{propertyObj.location} </h1>
-        {/* <button onClick={deleteProperty}>Delete</button>
-        <button onClick={editProperty}>Edit</button>
-        <button onClick={applyProperty}>apply</button>
-        <button onClick={addFavorite}>Favorite</button> */}
-        {/* <h1>ID </h1>
-        <h1> PropertyType: </h1>
-        <h1> Price: </h1>
-        <h1> numberOfRooms: </h1>
-        <h1>HomeType :</h1>
-        <h1> Location: </h1> */}
-        <button >Delete</button>
-        <button >Edit</button>
-        <button >apply</button>
-        <button >Favorite</button>
+  return (
+    <div id='details'>
+      <div>
+        <img id='img' src='https://media.istockphoto.com/id/1432540847/photo/3d-rendering-of-white-and-black-modern-tudor-house.jpg?s=612x612&w=0&k=20&c=3g89Cz9H6t6YnUTDTdBx2-oFLdoR53K6L78KgY4fG-s=' alt='details' width="1800px" height="700px"></img>
+        <div id='propertyDetails'>
+          
+          <h1> PropertyType: {propertyObj.propertyType}</h1>
+          <h1> Price: {propertyObj.price}</h1>
+          <h1> numberOfRooms: {propertyObj.numberOfRooms}</h1>
+          <h1>HomeType :{propertyObj.homeType}</h1>
+          <h1>View Count :{propertyObj.viewCount}</h1>
+          <h1> Location:{propertyObj.location} </h1>
+
+
+          <div id="btn">
+            <ul>
+              <li>
+                <button >Delete</button>
+                </li>
+                <li>
+                <button >Edit</button>
+                </li>
+                <li>
+                <button >apply</button>
+                </li>
+                <li>
+                <button >Favorite</button>
+                </li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
     </div>
   )
