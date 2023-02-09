@@ -11,14 +11,16 @@ export default function Header() {
                         {/* Customer */}
                         <li><Link to="/rent">Rent</Link></li>
                         <li><Link to="/buy">Buy</Link></li>
-                        <li><Link to="/">Favorites</Link></li>
+                        <li><Link to="/favorites">Favorites</Link></li>
                         {/* Owner */}
-                        <li><Link to="/">Oproperties</Link></li>
-                        <li><Link to="/">App list</Link></li>
-                        <li><Link to="/">Add Property</Link></li>
+                        <li><Link to="/myproperties">My Properties</Link></li>
+                        <li><Link to="/applications">Applications</Link></li>
+                        <li><Link to="/addproperty">Add Property</Link></li>
                         {/* Admin */}
-                        <li><Link to="/">10 properties</Link></li>
-                        <li><Link to="/">R Customers</Link></li>
+                        <li><Link to="/rentedproperties">Last Rented Properties</Link></li>
+                        <li><Link to="/recentcustomers">Recent Customers</Link></li>
+                        <li><Link to="/">Customers</Link></li>
+                        <li><Link to="/">Owners</Link></li>
 
                         <li><Link to="/"> Log In </Link></li>
 

@@ -1,9 +1,15 @@
 import { Route, Routes, Navigate } from "react-router";
 // import { Routes } from "react-router-dom";
 import Properties from "../container/Properties";
+import RentedProperties from "../adminDashBoard/RentedProperties";
+import RecentCustomer from "../adminDashBoard/RecentCustomer";
 import Rent from "../container/Rent";
 import Buy from "../container/Buy";
 import PropertyDetails from "../component/PropertyDetails";
+import FavoriteList from "../container/FavoriteList";
+import Applications from "../component/owner/Applications";
+import AddProperty from "../component/owner/AddProperty";
+import MyProperties from "../component/owner/MyProperties";
 
 
 
@@ -29,8 +35,23 @@ export default function PageRoutes(props) {
             <Route path=":id" element={<PropertyDetails />}></Route>
             </Route>
 
-            {/* <Route path="/course" element={<Course />}></Route> */}
-            {/* <Route path="selected" element={<SelectedStudent />}></Route> */}
+            <Route path="favorites">
+            <Route index  element={<FavoriteList />}/>
+            <Route path=":id" element={<PropertyDetails />}></Route>
+            </Route>
+
+            <Route path="rentedproperties" element={<RentedProperties />}></Route>
+            <Route path="recentcustomers" element={<RecentCustomer />}></Route>
+
+            <Route path="myproperties" element={<MyProperties />}></Route>
+            <Route path="applications" element={<Applications />}></Route>
+            <Route path="addproperty" element={<AddProperty />}></Route>
+
+
+            
+
+      
+           
 
         </Routes>
       

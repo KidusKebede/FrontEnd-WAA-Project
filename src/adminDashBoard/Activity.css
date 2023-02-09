@@ -1,0 +1,8 @@
+#property{
+    background-color: rgb(104, 199, 199);
+    color: black;
+    border: 2px solid rgb(68, 214, 63);
+    width: 300px;
+    padding-left: 20px;
+    margin-top: 5px;
+}
