@@ -1,0 +1,15 @@
+#activity{
+    background-color: white;
+    color: black;
+    border: 0px solid rgb(237, 227, 227);
+    width: 500px;
+    padding-left: 20px;
+    margin-top: 5px;
+    display: inline-flex;
+    padding-inline-start: 5px;
+    border-radius: 80px;
+}
+
+#activity>ul>li{
+    list-style-type: none;
+}

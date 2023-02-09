@@ -1,18 +1,20 @@
-import logo from "./logo.svg";
-import "./App.css";
-import Properties from "./container/Properties";
-import OwnerDashBoared from "./owner/OwnerDashBoared";
-import { BrowserRouter } from "react-router-dom";
+
+import logo from './logo.svg';
+import './App.css';
+import Properties from './container/Properties';
+import { BrowserRouter } from 'react-router-dom';
+import Dashboard from './dashboard/Dashboard';
 
 function App() {
   return (
-    <div className="app">
-      <BrowserRouter>
-        <h1>Manage Your Properties</h1>
-        <OwnerDashBoared />
-        {/* <Properties /> */}
-      </BrowserRouter>
-    </div>
+  //  <Properties/>
+  <div className="App">
+  <BrowserRouter>
+  <h1 id="header"> G3 Property Managment Portal </h1>
+    <Dashboard />
+  </BrowserRouter>
+</div>
+
   );
 }
 

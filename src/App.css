@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+#header{
+  font-size: 45px;
+  text-transform: uppercase;
+  text-align: center;
+  color: black;
+  font-style: italic;
+  font-family: Nigerian;
+  font-weight: bolder;
+  box-shadow: 8px 2px rgb(243, 237, 237), 3em 0 1em rgb(22, 22, 19);
+  
+  
+}
