@@ -89,7 +89,7 @@ export default function PropertyDetails(props) {
 
     const applicationData = {
       date: "2028-01-01",
-      activityType: "rent",
+      activityType: propertyObj.propertyType,
       status: "applied",
       ownerId: owner.id,
       pi:param.id,
@@ -125,10 +125,10 @@ export default function PropertyDetails(props) {
         });
     };
 
-    const runEmailAndApplication = () => {
-      sendEmail();
-      createApplication();
-    };
+    // const runEmailAndApplication = () => {
+    //   sendEmail();
+    //   createApplication();
+    // };
 
   return (
     <div id='details'>
@@ -149,7 +149,7 @@ export default function PropertyDetails(props) {
              
                 
                 <li>
-                <form ref={form} onSubmit={createApplication}>
+                <form ref={form} onSubmit={sendEmail}>
                 <input type="submit" value="Apply" />
                 
                </form>
@@ -157,6 +157,7 @@ export default function PropertyDetails(props) {
                 <li>
                   
                 <button >Favorite</button>
+                <button onClick={() => { navigate("-1") }}>Back</button>
                 </li>
             </ul>
           </div>
