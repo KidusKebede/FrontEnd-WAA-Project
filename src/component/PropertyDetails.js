@@ -5,6 +5,7 @@ import './Property'
 import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
 
 export default function PropertyDetails(props) {
+
   let navigate= useNavigate();
 
   const form=useRef()
@@ -33,6 +34,8 @@ export default function PropertyDetails(props) {
     });
 
 
+
+  
   let param = useParams();
 
   //Fetches a property by an ID
@@ -85,12 +88,13 @@ export default function PropertyDetails(props) {
     }, [param.id]);
 
     const applicationData = {
-      date: "2023-01-o1",
+      date: "2028-01-01",
       activityType: "rent",
       status: "applied",
       ownerId: owner.id,
-      users: 1,
-      property:param.id
+      pi:param.id,
+      ui: 1
+      
     };
 
     let createApplication= ()=>{
@@ -106,6 +110,7 @@ export default function PropertyDetails(props) {
     };
   
     const sendEmail = (event) => {
+      createApplication();
       alertOnClick();
       event.preventDefault();
   
@@ -118,6 +123,11 @@ export default function PropertyDetails(props) {
         }, (error) => {
           console.log(error.text);
         });
+    };
+
+    const runEmailAndApplication = () => {
+      sendEmail();
+      createApplication();
     };
 
   return (
