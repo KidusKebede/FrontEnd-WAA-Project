@@ -85,12 +85,13 @@ export default function PropertyDetails(props) {
     }, [param.id]);
 
     const applicationData = {
-      date: "2023-01-o1",
+      date: "2028-01-01",
       activityType: "rent",
       status: "applied",
       ownerId: owner.id,
-      users: 1,
-      property:param.id
+      pi:param.id,
+      ui: 1
+      
     };
 
     let createApplication= ()=>{
@@ -120,6 +121,11 @@ export default function PropertyDetails(props) {
         });
     };
 
+    const runEmailAndApplication = () => {
+      sendEmail();
+      createApplication();
+    };
+
   return (
     <div id='details'>
       <div>
@@ -139,7 +145,7 @@ export default function PropertyDetails(props) {
              
                 
                 <li>
-                <form ref={form} onSubmit={sendEmail}>
+                <form ref={form} onSubmit={createApplication}>
                 <input type="submit" value="Apply" />
                 
                </form>
