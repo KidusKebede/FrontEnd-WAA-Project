@@ -22,11 +22,11 @@ export default function RecentCustomer(props) {
       })
   }
 
-  const show= activities.map(a=>{
-    return <Users a={a}/>
+  const show = activities.map(a => {
+    return <Users a={a} />
   })
 
-  
+
 
   useEffect(() => {
     getAllUsers()

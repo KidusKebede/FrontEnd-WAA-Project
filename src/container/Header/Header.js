@@ -19,8 +19,8 @@ export default function Header() {
                         {/* Admin */}
                         <li><Link to="/rentedproperties">Last Rented Properties</Link></li>
                         <li><Link to="/recentcustomers">Recent Customers</Link></li>
-                        <li><Link to="/">Customers</Link></li>
-                        <li><Link to="/">Owners</Link></li>
+                        <li><Link to="/allcustomers">Customers</Link></li>
+                        <li><Link to="/allowners">Owners</Link></li>
 
                         <li><Link to="/"> Log In </Link></li>
 

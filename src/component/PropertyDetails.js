@@ -5,6 +5,7 @@ import './Property'
 import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
 
 export default function PropertyDetails(props) {
+
   let navigate= useNavigate();
 
   const form=useRef()
@@ -33,6 +34,8 @@ export default function PropertyDetails(props) {
     });
 
 
+
+  
   let param = useParams();
 
   //Fetches a property by an ID
