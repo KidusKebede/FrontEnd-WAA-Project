@@ -1,10 +1,29 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Application from "./Application";
-import './Application.css'
+import "./Application.css";
 
 const Applications = () => {
   const [applicationList, setApplicationList] = useState([]);
+
+  const reject = (id) => {
+    setApplicationList(applicationList.filter((activity) => activity.id != id));
+  };
+
+  const approve = (id, updatedObject) => {
+    setApplicationList(
+      applicationList.map((obj) => (obj.id === id ? updatedObject : obj))
+    );
+
+    axios
+      .put(`http://localhost:8080/api/v1/activities/${id}`, updatedObject)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   const getApplications = () => {
     axios
@@ -32,7 +51,11 @@ const Applications = () => {
           <li key={activity.id}>
             {
               <div className="application">
-                <Application activity={activity} />
+                <Application
+                  activity={activity}
+                  approve={approve}
+                  reject={reject}
+                />
               </div>
             }
           </li>
@@ -41,5 +64,4 @@ const Applications = () => {
     </div>
   );
 };
-
 export default Applications;
