@@ -1,10 +1,13 @@
+
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './Property.css'
 
+
 export default function Property(props) {
   return (
     <div id="property">
+
       <ul>
         <li>
           <Link to={`${props.model.id}`}>
@@ -21,4 +24,5 @@ export default function Property(props) {
     </div>
 
   )
+
 }
