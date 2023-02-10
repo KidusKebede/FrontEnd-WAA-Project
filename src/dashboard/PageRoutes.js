@@ -11,6 +11,7 @@ import Applications from "../component/owner/Applications";
 import AddProperty from "../component/owner/AddProperty";
 import MyProperties from "../component/owner/MyProperties";
 
+import LogInPage from "../component/LogInPage";
 
 
 export default function PageRoutes(props) {
@@ -47,6 +48,8 @@ export default function PageRoutes(props) {
             <Route path="applications" element={<Applications />}></Route>
             <Route path="addproperty" element={<AddProperty />}></Route>
 
+            <Route path="login" element={<LogInPage/>}></Route>
+            
 
             
 
