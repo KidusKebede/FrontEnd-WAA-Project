@@ -1,3 +1,4 @@
+
 import logo from './logo.svg';
 import './App.css';
 import Properties from './container/Properties';
@@ -13,6 +14,7 @@ function App() {
     <Dashboard />
   </BrowserRouter>
 </div>
+
   );
 }
 

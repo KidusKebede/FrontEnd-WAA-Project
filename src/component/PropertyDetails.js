@@ -149,7 +149,7 @@ export default function PropertyDetails(props) {
              
                 
                 <li>
-                <form ref={form} onSubmit={sendEmail}>
+                <form ref={form} onSubmit={createApplication}>
                 <input type="submit" value="Apply" />
                 
                </form>
