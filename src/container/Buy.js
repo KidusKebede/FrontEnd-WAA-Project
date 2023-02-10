@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SearchForm from "./SearchForm";
 import Property from "../component/Property";
+import './Filter.css'
 
 const Buy = () => {
   const [homeType, setHomeType] = useState();
@@ -42,54 +43,74 @@ const Buy = () => {
 
   const propertyElement = propertyList.map((p) => <Property model={p} />);
   return (
-    <div>
-      <div>
-        <div>
-          {" "}
-          <label>Home Type: </label>
-          <select
-            onChange={(e) => {
-              setHomeType(e.target.value);
-            }}
-          >
-            {/* <option value={null}>N/A</option> */}
-            <option value={"Apartment"}>Apartment</option>
-            <option value={"home"}>Home</option>
-          </select>
-        </div>
-        <div>
-          {" "}
-          <label>Rooms: </label>
-          <input
-            type="number"
-            value={rooms}
-            onChange={(e) => setRooms(e.target.value)}
-          />
-        </div>
-        <div>
-          <label> Location: </label>
-          <input
-            type="text"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-          />
-        </div>
-        <div>
-          {" "}
-          <label>Price: </label>
-          <input
-            type="number"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-          />
-        </div>
+    <div id="filterForm">
+      <div id="filtered">
 
-        <button onClick={searchProperty}>Apply Filter</button>
+        <ul>
+          <li>
+            <div>
+              {" "}
 
-        <div>{propertyElement}</div>
+
+              <label>Home Type: </label>
+              <select
+                onChange={(e) => {
+                  setHomeType(e.target.value);
+                }}
+              >
+
+                <option value={"Apartment"}>Apartment</option>
+                <option value={"home"}>Home</option>
+              </select>
+            </div>
+          </li>
+
+          <li>
+            <div>
+              {" "}
+              <label>Rooms: </label>
+              <input
+                type="number"
+                value={rooms}
+                onChange={(e) => setRooms(e.target.value)}
+              />
+            </div>
+
+          </li>
+          <li>
+            <div>
+              <label> Location: </label>
+              <input
+                type="text"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+              />
+            </div>
+
+          </li>
+
+          <li>
+            <div>
+              {" "}
+              <label>Price: </label>
+              <input
+                type="number"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+              />
+
+            </div>
+          </li>
+         
+            <button id="button" onClick={searchProperty}>Apply Filter</button>
+            <div>{propertyElement}</div>
+         
+
+        </ul>
       </div>
+
     </div>
-  );
+  )
 };
 
 export default Buy;
