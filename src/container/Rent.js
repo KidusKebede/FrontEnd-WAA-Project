@@ -42,10 +42,12 @@ const Buy = () => {
 
   const propertyElement = propertyList.map((p) => <Property model={p} />);
   return (
-    <div>
-      <div>
+    <div id="filterForm">
+      <div id="filtered">
+      <ul>
+        <li>
         <div>
-          {" "}
+        {" "}
           <label>Home Type: </label>
           <select
             onChange={(e) => {
@@ -57,6 +59,9 @@ const Buy = () => {
             <option value={"home"}>Home</option>
           </select>
         </div>
+        </li>
+
+        <li>
         <div>
           {" "}
           <label>Rooms: </label>
@@ -66,6 +71,10 @@ const Buy = () => {
             onChange={(e) => setRooms(e.target.value)}
           />
         </div>
+
+        </li>
+
+        <li>
         <div>
           <label> Location: </label>
           <input
@@ -74,6 +83,9 @@ const Buy = () => {
             onChange={(e) => setLocation(e.target.value)}
           />
         </div>
+
+        </li>
+        <li>
         <div>
           {" "}
           <label>Price: </label>
@@ -84,10 +96,13 @@ const Buy = () => {
           />
         </div>
 
-        <button onClick={searchProperty}>Apply Filter</button>
+        </li>
+
+        <button id="button"onClick={searchProperty}>Apply Filter</button>
 
         <div>{propertyElement}</div>
-      </div>
+        </ul>
+       </div>
     </div>
   );
 };

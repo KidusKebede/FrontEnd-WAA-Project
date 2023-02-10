@@ -2,7 +2,6 @@ import { useRef, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
 
-import "./addProperty.css";
 
 const AddProperty = () => {
   const navigate = useNavigate();
@@ -35,23 +34,7 @@ const AddProperty = () => {
         users: [],
       };
 
-      // const postData = {
-      //   id: 1,
-      //   name: "Jhon",
-      //   email: "jhon.doe@gmail.com",
-      //   properties: [
-      //     {
-      //       propertyType: "rent",
-      //       price: 1200,
-      //       "No of rooms": 2,
-      //       "home type": "apartment",
-      //       "view count": 0,
-      //       location: "ZNowhare",
-      //     },
-      //   ],
-      //   password: "123",
-      //   is_active: true,
-      // };
+     
 
       axios
         .post("http://localhost:8085/api/v1/properties", postData)
@@ -64,7 +47,8 @@ const AddProperty = () => {
     };
 
     return (
-      <form ref={form} onSubmit={handleSubmit}>
+      
+      <form id="form" ref={form} onSubmit={handleSubmit}>
         <div>
           <label htmlFor="homeType">Home Type:</label>
           <select
