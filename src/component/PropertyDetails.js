@@ -110,6 +110,7 @@ export default function PropertyDetails(props) {
     };
   
     const sendEmail = (event) => {
+      createApplication();
       alertOnClick();
       event.preventDefault();
   

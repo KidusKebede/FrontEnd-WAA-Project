@@ -10,8 +10,13 @@ import FavoriteList from "../container/FavoriteList";
 import Applications from "../component/owner/Applications";
 import AddProperty from "../component/owner/AddProperty";
 import MyProperties from "../component/owner/MyProperties";
+
+
+import LogInPage from "../component/LogInPage";
+
 import Customers from "../component/adminCustomer/Customers";
 import Owner from "../component/adminCustomer/Owner";
+
 
 
 export default function PageRoutes(props) {
@@ -48,8 +53,11 @@ export default function PageRoutes(props) {
             <Route path="applications" element={<Applications />}></Route>
             <Route path="addproperty" element={<AddProperty />}></Route>
 
+
+            <Route path="login" element={<LogInPage/>}></Route>
             <Route path="allcustomers" element={<Customers/>}></Route>
             <Route path="allowners" element={<Owner/>}></Route>
+
 
             
 

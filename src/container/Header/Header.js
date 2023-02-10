@@ -22,7 +22,7 @@ export default function Header() {
                         <li><Link to="/allcustomers">Customers</Link></li>
                         <li><Link to="/allowners">Owners</Link></li>
 
-                        <li><Link to="/"> Log In </Link></li>
+                        <li><Link to="/login"> Log In </Link></li>
 
                     </ul>
                 </nav>
