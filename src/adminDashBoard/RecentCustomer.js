@@ -23,7 +23,7 @@ export default function RecentCustomer(props) {
   }
 
   const show = activities.map(a => {
-    return <Users a={a} />
+    return <Users id={a.id} key={a.id} date={a.date} name={a.name}/>
   })
 
 
