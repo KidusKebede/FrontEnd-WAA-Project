@@ -15,6 +15,12 @@ const AddProperty = () => {
     const [price, setPrice] = useState("");
     const [propertyType, setPropertyType] = useState("");
 
+    const tokenTemp=window.sessionStorage.getItem('token')
+    const token = tokenTemp.substring(1, 187);
+  const config = {
+    headers: { Authorization: `Bearer ${token}`}
+  };
+
     const handleSubmit = (event) => {
       event.preventDefault();
       console.log("Form submitted with values: ", {
@@ -54,7 +60,7 @@ const AddProperty = () => {
       // };
 
       axios
-        .post("http://localhost:8080/api/v1/properties", postData)
+        .post("http://localhost:8080/api/v1/properties", postData,config)
         .then((response) => {
           navigate("/");
         })

@@ -7,6 +7,17 @@ import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
 export default function PropertyDetails(props) {
 
   let navigate= useNavigate();
+  
+    // let config = {
+    //   headers: {
+    //     'Authorization': 'Bearer ' + "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb3NoQGdtYWlsLmNvbSIsImV4cCI6MTY3NjA0NTA0MiwiaWF0IjoxNjc2MDQzOTYyfQ.XGPC00j5jRjrVzftegGVSRgy3jH5Ze6JJVZIrs9NrykMbIg9F3ufhLR8GLsY4GTd39ITMSXWYnlqGbIjMg_tBQ"
+    //   }}
+    
+    const tokenTemp=window.sessionStorage.getItem('token')
+  const token = tokenTemp.substring(1, 187);
+const config = {
+  headers: { Authorization: `Bearer ${token}`}
+};
 
   const form=useRef()
     const [owner, setOwner] = useState({
@@ -41,7 +52,7 @@ export default function PropertyDetails(props) {
   //Fetches a property by an ID
   let getPropertyById = () => {
     console.log(param.id);
-    axios.get("http://localhost:8080/api/v1/properties/" + param.id)
+    axios.get("http://localhost:8080/api/v1/properties/" + param.id,bodyParameters,config)
       .then(res => {
         setPropertyObj(res.data)
         console.log(propertyObj);
@@ -51,7 +62,7 @@ export default function PropertyDetails(props) {
 
     let getPropertyOwner= ()=>{
       console.log(param.id);
-      axios.get("http://localhost:8080/api/v1/users/properties/" + param.id)
+      axios.get("http://localhost:8080/api/v1/users/properties/" + param.id,bodyParameters,config)
       .then(res=>{
           setOwner(res.data)
   }).catch(()=>alert("Owner Data not Found"));
@@ -99,7 +110,7 @@ export default function PropertyDetails(props) {
 
     let createApplication= ()=>{
      
-      axios.post("http://localhost:8080/api/v1/activities", applicationData)
+      axios.post("http://localhost:8080/api/v1/activities", applicationData,config)
       .then(res=>{
           
   }).catch(()=>alert("Owner Data not Found"));

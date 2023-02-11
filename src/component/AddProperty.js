@@ -3,6 +3,11 @@ import React, { useRef, useNavigate } from "react";
 export default function AddProperty(props) {
   const form = useRef();
   const navigate = useNavigate();
+  const tokenTemp=window.sessionStorage.getItem('token')
+  const token = tokenTemp.substring(1, 187);
+const config = {
+  headers: { Authorization: `Bearer ${token}`}
+};
 
   const handleSubmit = () => {
     const formData = form.current;
@@ -15,7 +20,7 @@ export default function AddProperty(props) {
     };
 
     axios
-      .post("http:loacalhost:8080/api/v1/properties", propertyData)
+      .post("http:loacalhost:8080/api/v1/properties", propertyData,config)
       .then((res) => {
         navigate("/");
       })

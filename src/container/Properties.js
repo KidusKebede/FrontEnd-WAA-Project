@@ -12,10 +12,14 @@ export default function Properties(props) {
   //     {id:5, propertyType:"rent", price:5000, numberOfRooms:8, homeType:"House", location:"FL"},
   // ]
   const [properties, setProperties] = useState([]);
-
+  const tokenTemp=window.sessionStorage.getItem('token')
+  const token = tokenTemp.substring(1, 187);
+const config = {
+  headers: { Authorization: `Bearer ${token}`}
+};
   const getAllProperties = () => {
     axios
-      .get("http://localhost:8080/api/v1/properties")
+      .get("http://localhost:8080/api/v1/properties",config)
       .then((res) => setProperties(res.data))
       .catch((e) => {
         console.error();

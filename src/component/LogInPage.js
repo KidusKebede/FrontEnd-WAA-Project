@@ -1,41 +1,70 @@
 import React, { useState } from "react";
+import axios from 'axios';
+import { useNavigate } from "react-router";
 
 // import './Login.css';
 
 
 const LogInPage = () => {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+//   const [token, setAccessToken] = useState({
+//     accessToken:"",
+//     refreshToken:"",
+// });
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
+  const navigate=useNavigate()
   const handleLogin = (event) => {
-    event.preventDefault();
+    event.preventDefault()
+    //console.log("name:" + email+" :password:"+password);
      // Login action
+     getToken();
+     //console.log(token.accessToken);
+     navigate("/")
   };
+  const loginData = {
+    email: email,
+    password: password 
+  };
+  // const alertOnClick = () => {
+  //   alert("Successful Login: "+token.accessToken);
+  // };
 
-  const handleRegister = (event) => {
-    event.preventDefault();
-    // register action
-    
-  };
+  let getToken= ()=>{
+     
+    axios.post("http://localhost:8080/api/v1/authenticate", loginData)
+    .then(res=>{
+     // console.log(res.data.accessToken)
+     // setAccessToken(res.data)
+     // alertOnClick()
+      window.sessionStorage.setItem('token', JSON.stringify(res.data.accessToken));
+      console.log('lll', sessionStorage.getItem('token'))
+        
+}).catch(()=>{alert("Token not Found")
+//sessionStorage.setItem('token', JSON.stringify("notfound"));
+});
+}
+
+  // const handleRegister = (event) => {
+  //   event.preventDefault();
+  //   // register action// };
+   // const handleEmailChange = (event) => {
+  //   setEmail(event.target.value);// };
+  // const handlePasswordChange = (event) => {
+  // };
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleLogin}>
         <div>
           <label htmlFor="email">Email:</label>
           <input
             type="email"
             id="email"
             value={email}
-            onChange={handleEmailChange} />
+            onChange={e => setEmail(e.target.value)} />
         </div>
 
         <div>
@@ -44,11 +73,20 @@ const LogInPage = () => {
             type="password"
             id="password"
             value={password}
-            onChange={handlePasswordChange} />
+            onChange={e => setPassword(e.target.value)} />
         </div>
 
-        <button type="submit" onClick={handleLogin}> Login </button> 
-        <button type="submit" onClick={handleRegister}> Register </button>
+        {/* <div>
+          <label >Test access token:</label>
+          <input
+            type="text"
+            id="at"
+            value={accessToken}
+             />
+        </div> */}
+
+        <button type="submit"> Login </button> 
+       
       </form>
     </div>
   );

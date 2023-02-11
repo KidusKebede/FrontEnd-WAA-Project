@@ -7,10 +7,15 @@ export default function EditProperty(props) {
     const navigate = useNavigate();
 
     const [updateProperty, setUpdateProperty] = useState({})
+    const tokenTemp=window.sessionStorage.getItem('token')
+    const token = tokenTemp.substring(1, 187);
+  const config = {
+    headers: { Authorization: `Bearer ${token}`}
+  };
     
     //Get a property
     let getProperty = () => {
-        axios.get("http://localhost:8080/api/v1/properties" + param.id)
+        axios.get("http://localhost:8080/api/v1/properties" + param.id,config)
             .then((res) => setUpdateProperty(res.data)).catch((e) => {
                 console.error();
             })
@@ -29,7 +34,7 @@ export default function EditProperty(props) {
             Location: formData['location'].value,
         }
 
-        axios.post("http://localhost:8080/api/v1/properties" + param.id, propertyData).then((res)=>{
+        axios.post("http://localhost:8080/api/v1/properties" + param.id, propertyData,config).then((res)=>{
             navigate('/')
         }).catch("Data not update")
     }

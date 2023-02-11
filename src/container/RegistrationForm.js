@@ -6,7 +6,11 @@ export default function RegistrationForm(props) {
    const form= useRef();
 
    const formData= form.current;
-
+   const tokenTemp=window.sessionStorage.getItem('token')
+   const token = tokenTemp.substring(1, 187);
+ const config = {
+   headers: { Authorization: `Bearer ${token}`}
+ };
 
    //Saving registration form or handling registration form 
    const registered= {
@@ -16,7 +20,7 @@ export default function RegistrationForm(props) {
    }
 
   //Save registration form 
-   axios.post("http://localhost:8080/ api/v1/registers" , registered)
+   axios.post("http://localhost:8080/ api/v1/registers" , registered,config)
    .then((res)=>{
 
     console.log("posted")

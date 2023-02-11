@@ -9,6 +9,12 @@ export default function FavoriteList(props) {
 
     const [favoriteList, setFavoriteList] = useState([]);
 
+    const tokenTemp=window.sessionStorage.getItem('token')
+    const token = tokenTemp.substring(1, 187);
+  const config = {
+    headers: { Authorization: `Bearer ${token}`}
+  };
+
    // const [favouriteObj, setFavouriteObj] = useState({});
 
 
@@ -41,7 +47,7 @@ export default function FavoriteList(props) {
     //     })
     // }
     const getAllFavorites= ()=>{
-            axios.get("http://localhost:8080/api/v1/users/1/favorite").then((res)=>setFavoriteList(res.data)).catch((e)=>{
+            axios.get("http://localhost:8080/api/v1/users/1/favorite", config).then((res)=>setFavoriteList(res.data)).catch((e)=>{
             console.error();
         })
     }

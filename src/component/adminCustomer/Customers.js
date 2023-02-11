@@ -5,9 +5,13 @@ import Users from './Users';
 
 export default function Customers() {
   const [customers, setCustomers] = useState([]);
-
+  const tokenTemp=window.sessionStorage.getItem('token')
+  const token = tokenTemp.substring(1, 187);
+const config = {
+  headers: { Authorization: `Bearer ${token}`}
+};
   const getAllCustomers = () => {
-    axios.get("http://localhost:8080/api/v1/users/customers")
+    axios.get("http://localhost:8080/api/v1/users/customers",config)
       .then((res) => {
         setCustomers(res.data);
       }).catch((e) => {

@@ -13,11 +13,20 @@ const Buy = () => {
 
   const [propertyList, setPropertyList] = useState([]);
 
+  const tokenTemp=window.sessionStorage.getItem('token')
+  const token = tokenTemp.substring(1, 187);
+const config = {
+  headers: { Authorization: `Bearer ${token}`}
+};
+
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/v1/properties/sale")
-      .then((res) => setPropertyList(res.data))
+      .get("http://localhost:8080/api/v1/properties/sale",config)
+      .then((res) =>{setPropertyList(res.data)
+      console.log("from buy",config)
+  })
       .catch((e) => {
+        console.log("from rent",config)
         console.error();
       });
   }, []);
@@ -32,7 +41,7 @@ const Buy = () => {
           propertyType: "sale",
           rooms: rooms,
         },
-      })
+      },config)
       .then((response) => {
         setPropertyList(response.data);
       })

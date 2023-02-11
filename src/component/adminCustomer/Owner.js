@@ -5,9 +5,14 @@ import Users from './Users';
 
 export default function Owner() {
   const [owners, setOwners] = useState([]);
+  const tokenTemp=window.sessionStorage.getItem('token')
+  const token = tokenTemp.substring(1, 187);
+const config = {
+  headers: { Authorization: `Bearer ${token}`}
+};
 
   const getAllOwners = () => {
-    axios.get("http://localhost:8080/api/v1/users/owners")
+    axios.get("http://localhost:8080/api/v1/users/owners",config)
       .then((res) => {
         setOwners(res.data);
       }).catch((e) => {
